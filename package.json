@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node bin/server.js",
-    "lint": "eslint ./app/ ./tests/ ./bin -c ./.eslintrc"
+    "lint": "eslint ./app/ ./test/ ./bin -c ./.eslintrc",
+    "test": "mocha spec ./test"
   },
   "repository": {
     "type": "git",
@@ -15,6 +16,7 @@
     "back-end",
     "nodejs",
     "express",
+    "oauth2",
     "interview",
     "test"
   ],
@@ -27,14 +29,22 @@
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
-    "eslint-plugin-node": "^6.0.1"
+    "eslint-plugin-node": "^6.0.1",
+    "mocha": "^5.2.0",
+    "supertest": "^3.1.0"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "helmet": "^3.12.1",
     "mongoose": "^5.1.1",
+    "mongoose-paginate": "^5.0.3",
     "nconf": "^0.10.0",
+    "oauth2orize": "^1.11.0",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-oauth2-client-password": "^0.1.2",
     "winston": "^2.4.2"
   }
 }

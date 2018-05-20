@@ -9,5 +9,8 @@
   },
   "api": {
     "version" : "v1"
+  },
+  "security": {
+    "tokenLife" : 10800
   }
 }
