@@ -24,12 +24,14 @@ if (credentials) {
 
   httpApp.get('*', (req, res) => {
     res.redirect('https://' + req.hostname + ':' + app.get('port') + req.url);
-    log.info('redirected to HTTPS');
+    log.info('Redirected to HTTPS');
   });
 
-  const server = https.createServer(credentials, app);
+  http.createServer(httpApp).listen(httpApp.get('port'), () => {
+    log.info('Express HTTP server listening on port ' + httpApp.get('port'));
+  });
 
-  server.listen(app.get('port'), () => {
+  https.createServer(credentials, app).listen(app.get('port'), () => {
     log.info('Express HTTPS server listening on port ' + app.get('port'));
   });
 } else {
