@@ -1,0 +1,40 @@
+{
+  "name": "hotelquickly-test-task",
+  "version": "1.0.0",
+  "description": "Test task for backend position @Hotelquicly",
+  "main": "server.js",
+  "scripts": {
+    "start": "node bin/server.js",
+    "lint": "eslint ./app/ ./tests/ ./bin -c ./.eslintrc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmiten/hotelquickly-test-task.git"
+  },
+  "keywords": [
+    "back-end",
+    "nodejs",
+    "express",
+    "interview",
+    "test"
+  ],
+  "author": "Dmitry Tenitskiy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmiten/hotelquickly-test-task/issues"
+  },
+  "homepage": "https://github.com/dmiten/hotelquickly-test-task#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-node": "^6.0.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "helmet": "^3.12.1",
+    "mongoose": "^5.1.1",
+    "nconf": "^0.10.0",
+    "winston": "^2.4.2"
+  }
+}

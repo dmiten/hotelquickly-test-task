@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "eslint-config-google",
+    "plugin:node/recommended"
+  ],
+  "rules": {
+    "dot-notation": "error",
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "keyword-spacing": ["error"],
+    "max-len": [1,120, 4, {"ignoreUrls": true}],
+    "max-nested-callbacks": ["error", 7],
+    "no-const-assign": "error",
+    "no-dupe-keys": "error",
+    "no-invalid-this": 0,
+    "no-undef": "error",
+    "no-undef-init": "error",
+    "node/no-unpublished-require": 0,
+    "require-jsdoc": 0,
+    "quotes": ["error", "single"]
+  },
+  "globals": {
+    "assert": true
+  },
+  "plugins": [
+    "node"
+  ],
+  "env": {
+    "node": true,
+    "mocha": true
+  }
+}

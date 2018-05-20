@@ -1,0 +1,13 @@
+{
+  "useHttps": true,
+  "port": {
+    "http": 3000,
+    "https": 3443
+  },
+  "mongoose": {
+    "uri": ""
+  },
+  "api": {
+    "version" : "v1"
+  }
+}
