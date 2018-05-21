@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Test task for backend position @Hotelquicly",
   "main": "server.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "scripts": {
+    "initialPopulation": "node lib/helpers/initialPopulation.js",
     "start": "node bin/server.js",
     "lint": "eslint ./app/ ./test/ ./bin -c ./.eslintrc",
     "test": "mocha spec ./test"

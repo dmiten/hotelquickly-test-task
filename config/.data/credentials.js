@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-const log = require('../../lib/log')(module);
+const log = require('../../lib/helpers/log')(module);
 
 const getCredentials = () => {
   try {
@@ -10,7 +10,7 @@ const getCredentials = () => {
     const cert = fs.readFileSync(pathToSecret + './cert.pem', {encoding: "utf8"});
     const key =  fs.readFileSync(pathToSecret + './key.pem', {encoding: "utf8"});
   
-    log.info('getting credentials ok');
+    log.info('Getting credentials - ok');
     
     return {cert, key}
   } catch (err) {

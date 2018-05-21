@@ -5,13 +5,13 @@
     "http": 3000,
     "https": 3443
   },
-  "mongoose": {
-    "uri": ""
-  },
   "api": {
     "version" : "v1"
   },
   "security": {
-    "tokenLife" : 10800
+    "tokenLife" : 36000
+  },
+  "db": {
+    "uri": ""
   }
 }

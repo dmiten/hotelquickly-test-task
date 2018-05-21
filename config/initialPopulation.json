@@ -1,0 +1,51 @@
+{
+  "users": [
+    {
+      "username": "LittleGod",
+      "password": "OneWeek",
+      "role": "admin"
+    },
+    {
+      "username": "Adam",
+      "password": "TastyApple",
+      "role": "roomCreator"
+    },
+    {
+      "username": "John",
+      "password": "SimplyJohn",
+      "role": "user"
+    },
+    {
+      "username": "Smith",
+      "password": "SimplySmith",
+      "role": "user"
+    },
+    {
+      "username": "Mary",
+      "password": "SimplyMary",
+      "role": "user"
+    }
+  ],
+  "clients": [
+    {
+      "name": "ownEmployees",
+      "clientId": "ownEmployees",
+      "clientSecret": "ownEmployees"
+    },
+    {
+      "name": "partner1",
+      "clientId": "partner1",
+      "clientSecret": "partner1"
+    },
+    {
+      "name": "partner2",
+      "clientId": "partner2",
+      "clientSecret": "partner2"
+    },
+    {
+      "name": "partner3",
+      "clientId": "partner3",
+      "clientSecret": "partner3"
+    }
+  ]
+}
