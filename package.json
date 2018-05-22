@@ -1,15 +1,15 @@
 {
   "name": "hotelquickly-test-task",
   "version": "1.0.0",
-  "description": "Test task for backend position @Hotelquicly",
-  "main": "server.js",
+  "description": "Test task for backend position @Hotelquickly",
+  "main": "bin/server.js",
   "engines": {
     "node": ">=6.0.0"
   },
   "scripts": {
     "initialPopulation": "node lib/helpers/initialPopulation.js",
-    "start": "node bin/server.js",
     "lint": "eslint ./app/ ./test/ ./bin -c ./.eslintrc",
+    "start": "node bin/server.js",
     "test": "mocha spec ./test"
   },
   "repository": {
@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/dmiten/hotelquickly-test-task#readme",
   "devDependencies": {
+    "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
     "eslint-plugin-node": "^6.0.1",
