@@ -5,9 +5,6 @@
     "http": 3000,
     "https": 3443
   },
-  "api": {
-    "version" : "v1"
-  },
   "security": {
     "tokenLife" : 36000
   },

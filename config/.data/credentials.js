@@ -22,9 +22,10 @@ module.exports = getCredentials;
 
 /*
 
-It's better to use nginx (for example) for HTTPS because of several reasons.
-But this solution is self-sufficient, so you can put here certificate and key in separate files.
-The following structure is expected:
+It's better to use nginx (for example) for HTTPS because of several reasons and disable HTTPS feature in config.json.
+But this solution is self-sufficient and we need HTTPS for proper authentication process.
+So you can put certificate and key in separate files to the 'pathToSecret'.
+The following structure of those files is expected:
 
   cert.pem =
   -----BEGIN CERTIFICATE-----
