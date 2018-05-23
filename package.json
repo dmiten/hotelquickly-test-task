@@ -1,7 +1,7 @@
 {
   "name": "hotelquickly-test-task",
   "version": "1.0.0",
-  "description": "Test task for backend position @Hotelquickly",
+  "description": "Test task for back-end developer position @Hotelquickly",
   "main": "bin/server.js",
   "engines": {
     "node": ">=6.0.0"

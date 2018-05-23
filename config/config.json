@@ -9,6 +9,8 @@
     "tokenLife" : 36000
   },
   "db": {
-    "uri": ""
+    "uri": "",
+    "roomCreators": ["admin", "roomCreator"],
+    "itemsPerQuery": 20
   }
 }
