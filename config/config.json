@@ -1,5 +1,5 @@
 {
-  "useHttps": true,
+  "useHttps": false,
   "extendedLog": true,
   "port": {
     "http": 3000,
