@@ -6,11 +6,14 @@
     "https": 3443
   },
   "security": {
-    "tokenLife" : 36000
+    "tokenLife" : 10800
   },
   "db": {
     "uri": "",
     "roomCreators": ["admin", "roomCreator"],
     "itemsPerQuery": 20
+  },
+  "auction": {
+    "duration": 600
   }
 }
