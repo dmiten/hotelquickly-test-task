@@ -4,9 +4,8 @@ const http = require('http');
 const https = require('https');
 const express = require('express');
 
-require('../lib/helpers/db');
-
 const app = require('../lib/app');
+const dbInit = require('../lib/helpers/db');
 const config = require('../lib/helpers/config');
 const log = require('../lib/helpers/log')(module);
 const socketServer = require('../lib/helpers/socketServer');
@@ -34,18 +33,18 @@ if (credentials) {
     );
 
   server = https.createServer(credentials, app);
-
-  server.listen(app.get('port'), () =>
-    log.info(`Express HTTPS server listening on port ${app.get('port')}`)
-  );
 } else {
   app.set('port', process.env.PORT || config.get('port:http') || 3000);
 
   server = http.createServer(app);
-
-  server.listen(app.get('port'), () =>
-    log.info(`Express HTTP server listening on port ${app.get('port')}`)
-  );
 }
 
-socketServer.create(server);
+server.listen(app.get('port'), (err) => {
+  if (err) {
+    log.info(err.message);
+  }
+
+  log.info(`Express server listening on port ${app.get('port')}`);
+  socketServer.create(server);
+  dbInit();
+});

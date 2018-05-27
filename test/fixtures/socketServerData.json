@@ -1,0 +1,15 @@
+{
+  "bid": {
+    "event": "New bid",
+    "roomId": "5b0792145ed7c2242c0939b5",
+    "currentBidId": "5b0792145ed7c2242c0939b5",
+    "currentPrice": 100,
+    "location": "http://test.ts/bids/5b0792145ed7c2242c0939b5"
+},
+
+  "room": {
+    "event": "New room",
+    "roomId": "5b0792145ed7c2242c0939b5",
+    "location": "http://test.ts/rooms/5b0792145ed7c2242c0939b5"
+  }
+}
