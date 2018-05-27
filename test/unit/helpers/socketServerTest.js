@@ -17,7 +17,7 @@ const options = {
   forceNew: true,
 };
 
-describe('socketServer', () => {
+describe('Socket server functionality', () => {
   before((done) => {
     testServer.listen(port, (err) => {
       if (err) {

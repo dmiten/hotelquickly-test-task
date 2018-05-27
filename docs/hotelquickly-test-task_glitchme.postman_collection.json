@@ -1,0 +1,607 @@
+{
+	"info": {
+		"_postman_id": "72f772f1-3ab8-4c63-86eb-d70f75afd68d",
+		"name": "hotelquickly-test-task_glitchme",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get status / version",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16f1700b-1fd1-4a72-97e3-65c6fee97a7d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://power-buffet.glitch.me/",
+					"protocol": "https",
+					"host": [
+						"power-buffet",
+						"glitch",
+						"me"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "Status 200"
+			},
+			"response": []
+		},
+		{
+			"name": "Get new token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca6adfaf-1079-444f-b9bd-3fa0dcb53847",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('access_token', jsonData.access_token);",
+							"postman.setEnvironmentVariable('refresh_token', jsonData.refresh_token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "tester",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "ownEmployees",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "ownEmployees",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "LittleGod",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "OneWeek",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://power-buffet.glitch.me/auth",
+					"protocol": "https",
+					"host": [
+						"power-buffet",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"auth"
+					]
+				},
+				"description": "Get new token with OAuth2 password grant flow"
+			},
+			"response": []
+		},
+		{
+			"name": "Renew accessToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "adc133c6-3edd-46d5-835d-b0351d1f510c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('access_token', jsonData.access_token);",
+							"postman.setEnvironmentVariable('refresh_token', jsonData.refresh_token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "tester",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "ownEmployees",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "ownEmployees",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "{{refresh_token}}",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://power-buffet.glitch.me/auth",
+					"protocol": "https",
+					"host": [
+						"power-buffet",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"auth"
+					]
+				},
+				"description": "Get new accessToken with refreshToken"
+			},
+			"response": []
+		},
+		{
+			"name": "get rooms list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16f1700b-1fd1-4a72-97e3-65c6fee97a7d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://power-buffet.glitch.me/rooms?all=true",
+					"protocol": "https",
+					"host": [
+						"power-buffet",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"rooms"
+					],
+					"query": [
+						{
+							"key": "all",
+							"value": "true"
+						}
+					]
+				},
+				"description": "Use rooms controllers.rooms.getList"
+			},
+			"response": []
+		},
+		{
+			"name": "get room by Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16f1700b-1fd1-4a72-97e3-65c6fee97a7d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://power-buffet.glitch.me/rooms/5b078d9137b79e17acd10a82",
+					"protocol": "https",
+					"host": [
+						"power-buffet",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"rooms",
+						"5b078d9137b79e17acd10a82"
+					]
+				},
+				"description": "Use rooms controllers.rooms.getById"
+			},
+			"response": []
+		},
+		{
+			"name": "post new room",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5d266908-6101-4f29-8637-deeb812aec94",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "Pretty cozy  test room with glitch",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "minPrice",
+							"value": "111",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://power-buffet.glitch.me/rooms",
+					"protocol": "https",
+					"host": [
+						"power-buffet",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"rooms"
+					]
+				},
+				"description": "Use controllers.room.postNew"
+			},
+			"response": []
+		},
+		{
+			"name": "delete room by Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16f1700b-1fd1-4a72-97e3-65c6fee97a7d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://power-buffet.glitch.me/ooms/5b0667607b48a33ddcefebc9",
+					"protocol": "https",
+					"host": [
+						"power-buffet",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"ooms",
+						"5b0667607b48a33ddcefebc9"
+					]
+				},
+				"description": "Use rooms controllers.rooms.deleteById"
+			},
+			"response": []
+		},
+		{
+			"name": "get bids list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16f1700b-1fd1-4a72-97e3-65c6fee97a7d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://power-buffet.glitch.me/bids",
+					"protocol": "https",
+					"host": [
+						"power-buffet",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"bids"
+					]
+				},
+				"description": "Use rooms controllers.bids.getList"
+			},
+			"response": []
+		},
+		{
+			"name": "bids",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16f1700b-1fd1-4a72-97e3-65c6fee97a7d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://power-buffet.glitch.me/bids/5b077c14b2b0a50540f7d668",
+					"protocol": "https",
+					"host": [
+						"power-buffet",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"bids",
+						"5b077c14b2b0a50540f7d668"
+					]
+				},
+				"description": "Use bids controller"
+			},
+			"response": []
+		},
+		{
+			"name": "post new bid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dd99ff6b-b266-4ba1-845e-65675485ef71",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "roomId",
+							"value": "5b0790e55ed7c2242c0939b2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "20000",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/bids",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"bids"
+					]
+				},
+				"description": "Use bids controllers.bids.post"
+			},
+			"response": []
+		}
+	]
+}
