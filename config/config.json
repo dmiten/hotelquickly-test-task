@@ -6,7 +6,8 @@
     "https": 3443
   },
   "security": {
-    "tokenLife" : 10800
+    "tokenLife" : 10800,
+    "socketAuthTimeout": 1000
   },
   "db": {
     "uri": "",

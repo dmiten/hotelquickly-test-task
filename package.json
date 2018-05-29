@@ -43,6 +43,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "helmet": "^3.12.1",
+    "http-shutdown": "^1.2.0",
     "mongoose": "^5.1.1",
     "mongoose-paginate": "^5.0.3",
     "nconf": "^0.10.0",
@@ -52,6 +53,7 @@
     "passport-http-bearer": "^1.0.1",
     "passport-oauth2-client-password": "^0.1.2",
     "socket.io": "^2.1.1",
+    "underscore": "^1.9.0",
     "winston": "^2.4.2"
   }
 }

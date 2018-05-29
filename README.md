@@ -23,8 +23,15 @@ _Read please[TASK.md](./TASK.md) for baseline conditions_
 - Users have to authorize by _POST_ `/auth` with relevant query headers and body (OAuth2 password grant flow is used);
 - In case of obsolete token users can renew it by _POST_ `/auth` with relevant query headers and body;
 - Registered users with the appropriate authority _POST_ `/rooms/:roomId` new room for auction (it will start immediately and server _emit_ _"New room"_ event to the _"news"_ room);
-- Registered users can _GET_ `/rooms` rooms with active auctions or all rooms (query param all=true);
-- Registered users can connect to socket server `https://power-buffet.glitch.me/?token=${_valid_token_here_}`;
+- Registered users can _GET_ `/rooms` rooms with active auctions (default behaviour) or all rooms (query param `?all=true`);
+- Registered users can connect to socket server `https://power-buffet.glitch.me`. immediately after connection user have to:
+```javascript
+... .on('connect', () => {  
+...... client.emit('auth', {token: ${_place_valid_token_here_}});  
+... })
+```
+...... or connection to server will be interrupted.
+
 - Registered users can join to auction for selected room @ socket server by _emit('join', roomId)_;
 - Registered users can _POST_ `/bids/:bidId` new bid according with the rules;
 - Auction server will check all conditions and in case of positive _emit_ messages to the _"news"_ and _"${roomId}"_ rooms;
