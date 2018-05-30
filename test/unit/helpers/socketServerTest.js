@@ -32,17 +32,11 @@ describe('Socket server functionality', () => {
     const client = clientIo.connect(socketUrl, socketOptions);
 
     client
-      .on('connect', () => {
-        client.emit('auth', {token: 'testToken'});
-      })
-      .on('auth', () => {
-        socketServer.emit('news', testData.room);
-      })
+      .on('connect', () => client.emit('auth', {token: 'testToken'}))
+      .on('auth', () => socketServer.emit('news', testData.room))
       .on('New room', (data) => {
         expect(data).to.deep.equal(testData.room);
         client.disconnect();
-      })
-      .on('disconnect', () => {
         socketServer.close(done);
       });
   });
@@ -55,20 +49,15 @@ describe('Socket server functionality', () => {
     const client = clientIo.connect(socketUrl, socketOptions);
 
     client
-      .on('connect', () => {
-        client.emit('auth', {token: 'testToken'});
-      })
+      .on('connect', () => client.emit('auth', {token: 'testToken'}))
       .on('auth', () => {
         client
-          .emit('join', testData.room.roomId, () => {
-            socketServer.emit(testData.room.roomId, testData.bid);
-          });
+          .emit('join', testData.room.roomId, () =>
+            socketServer.emit(testData.room.roomId, testData.bid));
       })
       .on('New bid', (data) => {
         expect(data).to.deep.equal(testData.bid);
         client.disconnect();
-      })
-      .on('disconnect', () => {
         socketServer.close(done);
       });
   });
@@ -81,9 +70,7 @@ describe('Socket server functionality', () => {
     const client = clientIo.connect(socketUrl, socketOptions);
 
     client
-      .on('disconnect', () => {
-        socketServer.close(done);
-      });
+      .on('disconnect', () => socketServer.close(done));
   });
 
   it(`Client with invalid token can not pass auth and will be disconnected in ${socketAuthTimeout}ms`, (done) => {
@@ -94,11 +81,7 @@ describe('Socket server functionality', () => {
     const client = clientIo.connect(socketUrl, socketOptions);
 
     client
-      .on('connect', () => {
-        client.emit('auth', {token: 'testToken'});
-      })
-      .on('disconnect', () => {
-        socketServer.close(done);
-      });
+      .on('connect', () => client.emit('auth', {token: 'testToken'}))
+      .on('disconnect', () => socketServer.close(done));
   });
 });

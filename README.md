@@ -11,12 +11,12 @@ _Read please[TASK.md](./TASK.md) for baseline conditions_
 |`/`|GET| | | |200 / {status, version}|
 |`/auth`|POST|Content-Type: application/x-www-form-urlencoded, Authorization: Basic|{grant_type: password, client_id, client_secret, username, password}| |501 if wrong grant type, 401 if wrong client id/secret, 403 if wrong username/password / {error, error-description}, 200 / {access_token, refresh_token, expires_in, token_type}|
 |`/auth`|POST|Content-Type: application/x-www-form-urlencoded|{grant_type: refresh_token, client_id, client_secret, refresh_token}| |200 / {access_token, refresh_token, expires_in, token_type}|
-|`/rooms`|GET|Authorization: Bearer ${token}|all: true/false (or none), page (limit is fixed to 20)|WWW-Authenticate will contain auth errors details if any|200 / {docs, total, limit, page, pages} or status according error|
-|`/rooms/:roomId`|GET|-- same with previous --| |-- same with previous --|200 / {room} or status according error|
-|`/rooms/:roomId`|POST|Content-Type: application/x-www-form-urlencoded, Authorization: Bearer ${token}|{minPrice, description}|WWW-Authenticate, Location|201 / {savedRoom} or status according error|
-|`/bids`|GET|Authorization: Bearer ${token}|page (limit is fixed to 20)|WWW-Authenticate will contain auth errors details if any|200 / {docs, total, limit, page, pages} or status according error|
-|`/bids/:bidId`|GET|-- same with previous --| |WWW-Authenticate will contain auth errors details if any|200 / {bid} or status according error|
-|`/bids/:bidId`|POST|Content-Type: application/x-www-form-urlencoded, Authorization: Bearer ${token}|{roomId, price}|WWW-Authenticate, Location|201 / {savedBid} or status according error|
+|`/rooms`|GET|Authorization: Bearer ${token}|all: true/false (or none), page (limit is fixed to 20)|WWW-Authenticate will contain auth errors details if any|200 / {docs, total, limit, page, pages} or status according to error|
+|`/rooms/:roomId`|GET|-- same with previous --| |-- same with previous --|200 / {room} or status according to error|
+|`/rooms/:roomId`|POST|Content-Type: application/x-www-form-urlencoded, Authorization: Bearer ${token}|{minPrice, description}|WWW-Authenticate, Location|201 / {savedRoom} or status according to error|
+|`/bids`|GET|Authorization: Bearer ${token}|page (limit is fixed to 20)|WWW-Authenticate will contain auth errors details if any|200 / {docs, total, limit, page, pages} or status according to error|
+|`/bids/:bidId`|GET|-- same with previous --| |WWW-Authenticate will contain auth errors details if any|200 / {bid} or status according to error|
+|`/bids/:bidId`|POST|Content-Type: application/x-www-form-urlencoded, Authorization: Bearer ${token}|{roomId, price}|WWW-Authenticate, Location|201 / {savedBid} or status according to error|
 
 #### Flow:
 - Users can _GET_ `/` info about current API status and version;
@@ -24,13 +24,13 @@ _Read please[TASK.md](./TASK.md) for baseline conditions_
 - In case of obsolete token users can renew it by _POST_ `/auth` with relevant query headers and body;
 - Registered users with the appropriate authority _POST_ `/rooms/:roomId` new room for auction (it will start immediately and server _emit_ _"New room"_ event to the _"news"_ room);
 - Registered users can _GET_ `/rooms` rooms with active auctions (default behaviour) or all rooms (query param `?all=true`);
-- Registered users can connect to socket server `https://power-buffet.glitch.me`. immediately after connection user have to:
+- Registered users can connect to socket server `https://power-buffet.glitch.me` immediately after connection user have to:
 ```javascript
-... .on('connect', () => {  
-...... client.emit('auth', {token: ${_place_valid_token_here_}});  
-... })
+   .on('connect', () => {  
+     client.emit('auth', {token: _place_valid_token_here_});
+   })
 ```
-...... or connection to server will be interrupted.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or connection to server will be interrupted.
 
 - Registered users can join to auction for selected room @ socket server by _emit('join', roomId)_;
 - Registered users can _POST_ `/bids/:bidId` new bid according with the rules;
