@@ -67,19 +67,7 @@
 			],
 			"request": {
 				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "tester",
-							"type": "string"
-						},
-						{
-							"key": "password",
-							"value": "test",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "POST",
 				"header": [
@@ -162,19 +150,7 @@
 			],
 			"request": {
 				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "tester",
-							"type": "string"
-						},
-						{
-							"key": "password",
-							"value": "test",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "POST",
 				"header": [
@@ -586,15 +562,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:3000/bids",
-					"protocol": "http",
+					"raw": "https://power-buffet.glitch.me/bids",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"power-buffet",
+						"glitch",
+						"me"
 					],
-					"port": "3000",
 					"path": [
 						"bids"
 					]
