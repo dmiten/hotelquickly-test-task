@@ -41,27 +41,6 @@ describe('Socket server functionality', () => {
       });
   });
 
-  it('Client with token can initiate new room with auction and receive messages there', (done) => {
-    const testServer = http.createServer(requestHandler);
-    testServer.listen(port);
-
-    socketServer.create(testServer, isTokenValidStub(true));
-    const client = clientIo.connect(socketUrl, socketOptions);
-
-    client
-      .on('connect', () => client.emit('auth', {token: 'testToken'}))
-      .on('auth', () => {
-        client
-          .emit('join', testData.room.roomId, () =>
-            socketServer.emit(testData.room.roomId, testData.bid));
-      })
-      .on('New bid', (data) => {
-        expect(data).to.deep.equal(testData.bid);
-        client.disconnect();
-        socketServer.close(done);
-      });
-  });
-
   it(`Client without token will be disconnected in ${socketAuthTimeout}ms`, (done) => {
     const testServer = http.createServer(requestHandler);
     testServer.listen(port);
