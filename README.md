@@ -32,7 +32,6 @@ _Read please[TASK.md](./TASK.md) for baseline conditions_
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or connection to server will be interrupted.
 
-- Registered users can join to auction for selected room @ socket server by _emit('join', roomId)_;
 - Registered users can _POST_ `/bids` new bid according with the rules;
 - Auction server will check all conditions and in case of positive _emit_ "New bid" event with all necessary details to the "news" room;
 - Registered users can _GET_ `/rooms/:roomId` all info for ${roomId} room (including dynamically populated list of all registered bids for this room);
